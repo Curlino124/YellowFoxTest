@@ -34,9 +34,14 @@ $file = __DIR__ . '/data/drive.json';
   echo "Die Fahrtzeit beträgt " . $result . "Sekunden.";
 
   echo '<hr style="margin: 3rem 0;">';
-  
+
   /* =========================================
       Aufgabe 02 --> zurückgelegte Entfernung
   ========================================= */
+
+  // Test
+  $distance = $analytics->testDistance();
+
+  echo "Die Entfernung zwischen den ersten beiden Punkten beträgt " . $distance . "km"; 
 
   ?>
