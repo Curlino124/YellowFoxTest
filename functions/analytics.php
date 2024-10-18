@@ -9,7 +9,9 @@ class Analytics {
   $this->data = $jsonData;
  }
 
- // Aufgabe 1 --> Fahrtzeit in Sekunden ...
+ /* =================================
+     Aufgabe 01 --> Fahrtzeit in s
+ ================================= */
  public function calculateSeconds() {
 
   // Daten prüfen
@@ -27,6 +29,10 @@ class Analytics {
   return $duration;
 
  }
+
+ /* ===========================================
+     Aufgabe 02 --> zurückgelegte Entfernung
+ =========================================== */
 
 }
 

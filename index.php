@@ -4,7 +4,7 @@ require_once __DIR__ . '/functions/analytics.php';
 
 // Zugriff auf drive.json
 
-$file = __DIR__ . '/data/drive.json';
+$file = __DIR__ . '/data/drive2.json';
 
 // ??? funftioniert ???
 
@@ -14,18 +14,27 @@ $file = __DIR__ . '/data/drive.json';
   //  Daten umwandeln
   $driveData = json_decode($data, true);
   // Daten ausgeben
-   var_dump($driveData);
- } else {
-   echo "irgendetwas funktioniert hier nicht";
- }
+  var_dump($driveData);
+  } else {
+   echo '<span style="color: red;">irgendetwas funktioniert hier nicht !!!</span>';
+  }
 
- echo '<hr style="margin: 3rem 0;">';
+  echo '<hr style="margin: 3rem 0;">';
 
- // instanzieren
- $analytics = new Analytics($driveData);
- // Berechnung
- $result = $analytics->calculateSeconds();
- // Ausgabe
- echo $result;
+  /* =================================
+      Aufgabe 01 --> Fahrtzeit in s
+  ================================= */
 
-?>
+  echo '<h4>Aufgabe 1:</h4>';
+  // instanzieren
+  $analytics = new Analytics($driveData);
+  // aufrufen
+  $result = $analytics->calculateSeconds();
+  // ausgeben
+  echo "Die Fahrtzeit beträgt " . $result . "Sekunden.";
+
+  /* =========================================
+      Aufgabe 02 --> zurückgelegte Entfernung
+  ========================================= */
+
+  ?>
