@@ -39,9 +39,18 @@ $file = __DIR__ . '/data/drive.json';
       Aufgabe 02 --> zurückgelegte Entfernung
   ========================================= */
 
+  echo '<h4>Aufgabe 2:</h4>';
   // Test
   $distance = $analytics->testDistance();
 
-  echo "Die Entfernung zwischen den ersten beiden Punkten beträgt " . $distance . "km"; 
+  echo "Die Entfernung zwischen den ersten beiden Punkten beträgt " . $distance . "km";
+  echo '<br />';
+
+  // Gesamtdistanz
+  $totalDistance = $analytics->calculateTotal();
+
+  echo "Die zurückgelegte Gesamtdistanz beträgt: " . $totalDistance . "km";
+
+  echo '<hr style="margin: 3rem 0;">';
 
   ?>

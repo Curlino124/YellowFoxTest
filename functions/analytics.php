@@ -50,7 +50,7 @@ class Analytics {
  $deltaLAT = $lat2 - $lat1; // Breitegrade
  $deltaLON = $lon2 - $lon1; // Längengrade
 
- // Haversine Formel anwenden --> Zwischenergebnisse
+ // Haversine Formel anwenden --> Zwischenergebnis
  $a = sin($deltaLAT / 2) * sin($deltaLAT / 2) +
       cos($lat1) * cos($lat2) *
       sin($deltaLON / 2) * sin($deltaLON / 2);
@@ -74,6 +74,30 @@ class Analytics {
   $lon2 = $this->data[1]['longitude'];
 
   return $this->calculateDistance($lat1, $lon1, $lat2, $lon2);
+
+ }
+
+ // zurückgelegte Distanz berechnen
+
+ public function calculateTotal() {
+
+  $totalDistance = 0;
+
+  // durch alle Werte loopen
+  for ($i = 0; $i < count($this->data) -1; $i++) {
+   $lat1 = $this->data[$i]['latitude'];
+   $lon1 = $this->data[$i]['longitude'];
+   $lat2 = $this->data[$i + 1]['latitude'];
+   $lon2 = $this->data[$i + 1]['longitude'];
+
+   // Haversine-Distanz berechnen
+   $distance = $this->calculateDistance($lat1, $lon1, $lat2, $lon2);
+
+   // Distanzen addiern
+   $totalDistance += $distance;
+  }
+
+  return $totalDistance;
 
  }
 
