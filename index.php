@@ -4,7 +4,7 @@ require_once __DIR__ . '/functions/analytics.php';
 
 // Zugriff auf drive.json
 
-$file = __DIR__ . '/data/drive2.json';
+$file = __DIR__ . '/data/drive.json';
 
 // ??? funftioniert ???
 
