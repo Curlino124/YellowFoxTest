@@ -34,6 +34,25 @@ class Analytics {
      Aufgabe 02 --> zurückgelegte Entfernung
  =========================================== */
 
+ // Berechnung zwischen 2 Punkten
+ public function calculateDistance($lat1, $lon1, $lat2, $lon2) {
+
+  $earthRadius = 6371;
+
+  // Koordinaten --> Bogenmaß
+  $lat1 = deg2rad($lat1);
+  $lon1 = deg2rad($lon1);
+  $lat2 = deg2rad($lat2);
+  $lon2 = deg2rad($lon2);
+ }
+
+ // Differenzen
+ $deltaLAT = $lat2 - $lat1;
+ $deltaLON = $lon2 - $lon1;
+
+ // Haversine Formel anwenden
+ 
+
 }
 
 ?>
