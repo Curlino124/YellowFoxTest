@@ -1,6 +1,9 @@
 <?php
 // Zugriff Klasse Analytics
 require_once __DIR__ . '/functions/analytics.php';
+// Datenbank- Stuff
+require_once __DIR__ . '/database/config/connection.php';
+require_once __DIR__ . '/database/database.php';
 
 // Zugriff auf drive.json
 
@@ -56,5 +59,11 @@ $file = __DIR__ . '/json-data/drive.json';
   /* ============================================
       Aufgabe 03 --> Ergebnisse in DB speichern
   ============================================ */
+
+  $startTime = $driveData[0]['time'];
+  $endTime = end($driveData)['time'];
+
+  $database = new Database($pdo);
+  $database->insertData($startTime, $endTime, $time, $totalDistance);
 
   ?>
