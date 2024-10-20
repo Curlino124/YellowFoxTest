@@ -34,5 +34,6 @@ $(document).ready(function () {
         sortDescending: ": aktivieren, um Spalte absteigend zu sortieren",
       },
     },
+    searching: false,
   });
 });

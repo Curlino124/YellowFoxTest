@@ -1,4 +1,5 @@
 <?php
+
 // Zugriff Klasse Analytics
 require_once __DIR__ . '/functions/analytics.php';
 // Datenbank- Stuff
@@ -8,43 +9,35 @@ require_once __DIR__ . '/database/database.php';
 // Zugriff auf drive.json
 
 $file = __DIR__ . '/json-data/drive.json';
+// Daten auslesen
+$data = file_get_contents($file);
+//  Daten umwandeln
+$driveData = json_decode($data, true);
 
-  // Daten auslesen
-  $data = file_get_contents($file);
-  //  Daten umwandeln
-  $driveData = json_decode($data, true);
+ /* =================================
+     Aufgabe 01 --> Fahrtzeit in s
+ ================================= */
 
-  /* =================================
-      Aufgabe 01 --> Fahrtzeit in s
-  ================================= */
-
-  // instanzieren
-  $analytics = new Analytics($driveData);
-  // aufrufen
-  $time = $analytics->calculateSeconds();
+ // instanzieren
+ $analytics = new Analytics($driveData);
+ // aufrufen
+ $time = $analytics->calculateSeconds();
 
   /* ============================================
       Aufgabe 02 --> zurückgelegte Entfernung
   ============================================ */
 
   // Test
-  $distance = $analytics->testDistance();
-
-  echo "Die Entfernung zwischen den ersten beiden Punkten beträgt " . $distance . "km";
-
+  // $distance = $analytics->testDistance();
   // Gesamtdistanz
   $totalDistance = $analytics->calculateTotal();
-
-  echo "Die zurückgelegte Gesamtdistanz beträgt: " . $totalDistance . "km";
-
-  echo '<hr style="margin: 3rem 0;">';
 
   /* ============================================
       Aufgabe 03 --> Ergebnisse in DB speichern
   ============================================ */
 
-  // $startTime = $driveData[0]['time'];
-  // $endTime = end($driveData)['time'];
+  $startTime = $driveData[0]['time'];
+  $endTime = end($driveData)['time'];
 
   // $database = new Database($pdo);
   // $database->insertData($startTime, $endTime, $time, $totalDistance);
@@ -68,10 +61,10 @@ $file = __DIR__ . '/json-data/drive.json';
     <title>YellowFox | Aufgabe</title>
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container-fluid p-4">
      <div class="row">
       <!-- Daten -->
-      <div class="01 Fahrdaten col-md-6">
+      <div class="01 Fahrdaten col-md-6 px-4">
        <h4 class="fw-bold mb-4">Fahrdaten:</h4>
         <div class="table-container">
             <table id="driveData" class="table table-hover table-bordered">
@@ -97,15 +90,39 @@ $file = __DIR__ . '/json-data/drive.json';
       
        <div class="col-md-6">
         <!-- Fahrzeit -->
-        <div class="02 Fahrzeit mb-6">
+        <div class="Antwort Fahrzeit">
          <h4 class="fw-bold mb-2">Fahrzeit in Sekunden:</h4>
-        <div class="time-text">Die zurückgelegt Fahrtzeit beträgt: <span class="mr-1 "><?php echo $time; ?></span>Sekunden</div>
+         <div class="time-text">Die zurückgelegt Fahrtzeit beträgt: <span class="mr-1 "><?php echo $time; ?></span>Sekunden</div>
+        </div>
         <!-- Distanz -->
-        <div class="03 Distanz mt-4">
+        <div class="Antwort Distanz my-4">
          <h4 class="fw-bold">zurückgelegte Distanz:</h4>
-       
-        
+         <div class="time-text">Die zurückgelegt Distanz beträgt: <span class="mr-1 "><?php echo $totalDistance; ?></span>Kilometer</div>
        </div>
+       <!-- in DB speichern -->
+        <div class="Speichern mt-4 mx-4">
+         <button id="saveData" class="btn btn-primary w-100">Daten speichern</button>
+        </div>
+       <!-- Tabelle -->
+        <div class="Anzeigen">
+         <h4>gespeicherte Fahrten</h4>
+         <div class="table-container">
+          <table class="table-bordered table-hover">
+           <thead>
+            <tr>
+             <th>Fahrt</th>
+             <th>Startzeit</th>
+             <th>Endzeit</th>
+             <th>Dauer</th>
+             <th>Distanz</th>
+            </tr>
+            
+            </thead>
+          </table>
+         </div>
+
+        </div>
+
      </div>
     </div>
 
@@ -121,10 +138,30 @@ $file = __DIR__ . '/json-data/drive.json';
 <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
 
 <script src="view/script.js"></script>
-    <!-- <script>
-      $(document).ready(function () {
-        $("#driveData").DataTable();
-      });
-    </script> -->
-  </body>
+
+<script>
+$(document).ready(function() {
+    $("#saveData").click(function() {
+        const startTime = <?= json_encode($startTime); ?>;
+        const endTime = <?= json_encode($endTime); ?>;
+        const time = <?= json_encode($time); ?>;
+        const totalDistance = <?= json_encode($totalDistance); ?>;
+
+        $.ajax({
+            url: 'database/AJAX/save_data.php',
+            type: 'POST',
+            data: {
+                startTime: startTime,
+                endTime: endTime,
+                time: time,
+                totalDistance: totalDistance
+            },
+            success: function(response) {
+                 alert(response);
+                }
+        });
+    });
+});
+</script>
+</body>
 </html>

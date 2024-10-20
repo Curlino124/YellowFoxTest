@@ -10,6 +10,20 @@ class Database {
   $this->pdo = $pdo;
  }
 
+ // Anzeige der Daten
+ public function showData() {
+
+  $sql = "SELECT * FROM trips";
+  $stmt = $this->pdo->query($sql);
+
+  if ($stmt) {
+   return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }else {
+   return [];
+  }
+
+ }
+
  // Einfügen der Daten
  public function insertData($startTime, $endTime, $time, $totalDistance) {
 
@@ -23,7 +37,7 @@ class Database {
   $stmt->bindParam(':distance', $totalDistance);
 
   if ($stmt->execute()) {
-   echo "Daten erfolgreich übermittelt";
+   echo "Daten gespeichert";
   } else {
    echo "Fehler beim Eintragen in die Datenbank";
   }
