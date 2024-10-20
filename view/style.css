@@ -1,0 +1,23 @@
+.table {
+  padding: 0.1rem;
+  font-size: 14px;
+}
+
+.table th {
+  background: #f3f3f3;
+}
+
+.dt-buttons .btn {
+  width: 10rem;
+  border: none;
+  margin-right: 1em;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem !important;
+  font-size: 12px !important;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.Fahrzeit {
+  height: 25vh;
+}
