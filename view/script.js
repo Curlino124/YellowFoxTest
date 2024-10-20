@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $("#driveData").DataTable({
+  $("#showData").DataTable({
     dom: "Bfrtip",
     buttons: [
       {
@@ -35,5 +35,19 @@ $(document).ready(function () {
       },
     },
     searching: false,
+    paging: false,
+    info: false,
+  });
+
+  $("#showDataBtn").click(function () {
+    $.ajax({
+      url: "./database/AJAX/show_data.php",
+      type: "GET",
+      success: function (response) {
+        const tableBody = $(".tableAnswer tbody");
+        tableBody.empty();
+        tableBody.append(response);
+      },
+    });
   });
 });

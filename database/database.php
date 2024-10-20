@@ -10,7 +10,6 @@ class Database {
   $this->pdo = $pdo;
  }
 
- // Anzeige der Daten
  public function showData() {
 
   $sql = "SELECT * FROM trips";
@@ -21,10 +20,8 @@ class Database {
   }else {
    return [];
   }
-
  }
 
- // Einfügen der Daten
  public function insertData($startTime, $endTime, $time, $totalDistance) {
 
   $sql = "INSERT INTO trips (Starttime, Endtime, Duration, Distance) VALUES (:starttime, :endtime, :duration, :distance)";
