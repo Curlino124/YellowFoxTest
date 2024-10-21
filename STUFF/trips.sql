@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 18. Okt 2024 um 18:48
+-- Erstellungszeit: 20. Okt 2024 um 22:17
 -- Server-Version: 10.4.32-MariaDB
 -- PHP-Version: 8.2.12
 
@@ -36,13 +36,6 @@ CREATE TABLE `trips` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Daten für Tabelle `trips`
---
-
-INSERT INTO `trips` (`data_id`, `Starttime`, `Endtime`, `Duration`, `Distance`) VALUES
-(1, '2023-07-02 14:00:23', '2023-07-02 14:14:22', 839, 20.01);
-
---
 -- Indizes der exportierten Tabellen
 --
 
@@ -60,7 +53,7 @@ ALTER TABLE `trips`
 -- AUTO_INCREMENT für Tabelle `trips`
 --
 ALTER TABLE `trips`
-  MODIFY `data_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `data_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

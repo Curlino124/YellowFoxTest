@@ -1,16 +1,16 @@
 $(document).ready(function () {
   $("#showData").DataTable({
-    dom: "Bfrtip",
-    buttons: [
-      {
-        extend: "csv",
-        text: "CSV Export",
-      },
-      {
-        extend: "excel",
-        text: "Excel Export",
-      },
-    ],
+    // dom: "Bfrtip",
+    // buttons: [
+    //   {
+    //     extend: "csv",
+    //     text: "CSV Export",
+    //   },
+    //   {
+    //     extend: "excel",
+    //     text: "Excel Export",
+    //   },
+    // ],
     language: {
       decimal: ",",
       thousands: ".",
@@ -37,6 +37,7 @@ $(document).ready(function () {
     searching: false,
     paging: false,
     info: false,
+    sorting: false,
   });
 
   $("#showDataBtn").click(function () {
