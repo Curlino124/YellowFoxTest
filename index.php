@@ -83,12 +83,12 @@ $driveData = json_decode($data, true);
         <!-- Fahrzeit -->
         <div class="Antwort Fahrzeit">
          <h4 class="fw-bold">Fahrzeit in Sekunden:</h4>
-         <div class="time-text">Die zurückgelegt Fahrtzeit beträgt: <span class="mr-1 "><?php echo $time; ?></span>Sekunden</div>
+         <div class="time-text">Die zurückgelegte Fahrtzeit beträgt: <span class="mr-1 "><?php echo $time; ?></span>Sekunden</div>
         </div>
         <!-- Distanz -->
         <div class="Antwort Distanz my-4">
          <h4 class="fw-bold">zurückgelegte Distanz:</h4>
-         <div class="time-text">Die zurückgelegt Distanz beträgt: <span class="mr-1 "><?php echo $totalDistance; ?></span>Kilometer</div>
+         <div class="time-text">Die zurückgelegte Distanz beträgt: <span class="mr-1 "><?php echo $totalDistance; ?></span>Kilometer</div>
        </div>
        <!-- in DB speichern -->
         <div class="Antwort Speichern mt-4 mx-4">
